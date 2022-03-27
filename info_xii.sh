@@ -13,8 +13,6 @@ titulo () {
 separador "USUARIOS"
 echo -e "  >  Usuario actual:"  $(whoami)
 echo -e "  >  Usuarios del Sistema -> " $(cat /etc/passwd | grep -i "sh$" | awk '{print $1}' FS=":" | xargs)
-echo -e "  >  Archivos del usuario actual:"
-
 
 separador "BINARIOS"
 
@@ -39,6 +37,8 @@ titulo "Backups"
 for back in $(ls /var/backups); do echo "/var/backups/$back"; done
 find / -name "*.backup" 2>/dev/null
 find / -name "*backup*" 2>/dev/null | grep ".gz$"
+titulo "Archivos del usuario actual"
+find / \-type f -user $(whoami) 2>/dev/null | grep -vE "firefox|cgroup|proc|run|go|.kube|.local|.config|.cache"
 
 titulo "Logs"
 find / -type f -name "*.log" -readable 2>/dev/null | grep -vE "metasploit|dkms"
