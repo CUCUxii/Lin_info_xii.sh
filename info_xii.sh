@@ -17,7 +17,7 @@ echo -e "  >  Usuarios del Sistema -> " $(cat /etc/passwd | grep -i "sh$" | awk 
 separador "BINARIOS"
 
 titulo "SUIDS"
-find / -perm /4000 2>/dev/null | grep -vE "kismet|snap|chrome|mount|chfn|chsh|passw|polkit"
+find / -perm /4000 2>/dev/null | grep -vE "kismet|snap|chrome|mount|chfn|chsh|passw|polkit|newgrp|sudo|su$"
 titulo "Capabilities"
 getcap -r / 2>/dev/null | grep "python|php|perl|ruby|node|gdb|vi" || echo "No hay capabilities"
 titulo "SUDO NO PASSWD"
