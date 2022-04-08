@@ -20,6 +20,8 @@ titulo "SUIDS"
 find / -perm /4000 2>/dev/null | grep -vE "kismet|snap|chrome|mount|chfn|chsh|passw|polkit"
 titulo "Capabilities"
 getcap -r / 2>/dev/null | grep "python|php|perl|ruby|node|gdb|vi" || echo "No hay capabilities"
+titulo "SUDO NO PASSWD"
+sudo -l | grep "NOPASSWD"
 
 separador "ARCHIVOS"
 titulo "Archvos de configuracion con permiso de escritura"
