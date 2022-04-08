@@ -27,6 +27,8 @@ separador "ARCHIVOS"
 titulo "Archvos de configuracion con permiso de escritura"
 find /etc \-writable 2>/dev/null
 find / -type f \-writable -name "*.conf" 2>/dev/null
+titulo "Archivos del usaurio actual"
+find / -user $(whoami) 2>/dev/null | grep -vE "proc|firefox|cgroup|systemd|doc|run|cache|pkg|snap|.local" 
 
 titulo "Ruta: /tmp"
 ls /tmp | grep -v "systemd"
