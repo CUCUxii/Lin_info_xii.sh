@@ -59,7 +59,7 @@ separador "PROGRMAS"
 echo -e "\n  >  Binarios utiles?:" $(which nmap aws nc ncat netcat nc.traditional wget curl ping gcc g++ make gdb base64 socat python python2 python3 python2.7 python2.6 python3.6 python3.7 perl php ruby xterm doas sudo fetch docker lxc ctr runc rkt kubectl 2>/dev/null | awk '{print $4}' FS='/' | xargs)
 
 separador "PROCESOS"
-ps faux | grep -vE "firefox|VBox|]|libexec|systemd"
+ps faux | grep -vE "accountsservice|firefox|VBox|]|libexec|systemd|wpa_supplicant|containerd|NetworkManager|gunicorn" | grep "root"
 cat /etc/cron* /etc/at* /etc/anacrontab /var/spool/cron/crontabs/root 2>/dev/null | grep -v "^#"
 
 separador "REDES"
